@@ -32,6 +32,7 @@ class View(ft.UserControl):
         #ROW with some controls
         self.ddyear = ft.Dropdown(label="Anno")
         self.ddshape = ft.Dropdown(label="Shape")
+        self.controller.fillDD()
 
 
         # button for the "creat graph" reply
@@ -40,19 +41,15 @@ class View(ft.UserControl):
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
 
-        self._controller.fillDD()
-
         # List View where the reply is printed
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
         self._page.controls.append(self.txt_result)
         self._page.update()
-
         self.btn_path = ft.ElevatedButton(text="Calcola percorso", on_click=self._controller.handle_path)
 
         row2 = ft.Row([self.btn_path],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row2)
-
         self.txtOut2 = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
         self._page.controls.append(self.txtOut2)
         self._page.update()
